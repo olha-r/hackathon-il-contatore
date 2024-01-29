@@ -1,13 +1,15 @@
-DROP TABLE IF EXISTS pizza;
 DROP TABLE IF EXISTS orders;
+DROP TABLE IF EXISTS pizza;
+
 
 CREATE TABLE pizza (
     id SERIAL,
     pizza_size VARCHAR(255),
     shape VARCHAR(255),
     base VARCHAR(255),
-    ingredient_id INTEGER not null,
+    ingredient text[][],
     oil INTEGER,
+    
     constraint pk_pizza_id primary key(id)
 );
 
@@ -22,10 +24,6 @@ CREATE TABLE orders (
 			foreign key (pizza_id)
 			references pizza(id)
 			);
-CREATE TABLE ingredient (
-	id SERIAL,
-	name VARCHAR(255),
-	constraint pk_ingredient_id primary key(id)
-			);
+
 
 

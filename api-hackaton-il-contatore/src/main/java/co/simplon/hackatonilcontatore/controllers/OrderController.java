@@ -1,51 +1,48 @@
 package co.simplon.hackatonilcontatore.controllers;
 
-import java.time.LocalDateTime;
+import java.util.List;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import co.simplon.hackatonilcontatore.dtos.OrderDto;
 import co.simplon.hackatonilcontatore.entities.Order;
+import co.simplon.hackatonilcontatore.repositories.IngredientRepository;
 import co.simplon.hackatonilcontatore.repositories.OrderRepository;
-import java.util.List;
+import co.simplon.hackatonilcontatore.repositories.PizzaRepository;
 
 @RestController
 @RequestMapping("/orders")
 public class OrderController {
-	private final OrderRepository orderRepository;
-	
-	public OrderController(OrderRepository orderRepository) {
-		super();
-		this.orderRepository = orderRepository;
-	}
-	
-	@PostMapping("create")
-	public void createOrder(OrderDto imputs) {
-		Order order = new Order();
-		order.setOrderNumber(null);
-		order.setStatus("en cours");
-		order.setDateTime(LocalDateTime.now());
-		//Pizza pizza = ;
-		//order.setPizza(pizza);
-	}
-	@GetMapping("find-all")
-	public List<Order> listOrder() {
-		List<Order> orders = orderRepository.findAll();
-		return orders;
-		
-	}
-	
-	@GetMapping("find/{$id}")
-	public void findOrder() {	
-	}
-	
-	@DeleteMapping("delete/{id}")
-	public void deleteOrder() {
-		
-	}
-	
+    private final OrderRepository orderRepository;
+
+    private final PizzaRepository pizzaRepository;
+
+    private final IngredientRepository ingredientRepository;
+
+    public OrderController(OrderRepository orderRepository,
+	    PizzaRepository pizzaRepository,
+	    IngredientRepository ingredientRepository) {
+	this.orderRepository = orderRepository;
+	this.pizzaRepository = pizzaRepository;
+	this.ingredientRepository = ingredientRepository;
+    }
+
+    @GetMapping("find-all")
+    public List<Order> listOrder() {
+	List<Order> orders = orderRepository.findAll();
+	return orders;
+
+    }
+
+    @GetMapping("find/{$id}")
+    public void findOrder() {
+    }
+
+    @DeleteMapping("delete/{id}")
+    public void deleteOrder() {
+
+    }
+
 }

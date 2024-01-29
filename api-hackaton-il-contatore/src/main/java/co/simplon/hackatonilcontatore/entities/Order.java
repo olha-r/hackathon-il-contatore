@@ -1,80 +1,68 @@
 package co.simplon.hackatonilcontatore.entities;
 
-import java.time.LocalDateTime;
+import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "orders")
 public class Order {
-	@Id
-	@Column(name = "id")
-	private Long id;
-	@Column(name = "order_number")
-	private String orderNumber;
-	@Column(name = "order_status")
-	private String status;
-	@JoinColumn(name = "pizza_id")
-	@ManyToOne(fetch = FetchType.LAZY)
-	private Pizza pizza;
-	@Column(name = "date_time")
-	private LocalDateTime dateTime;
-	
-	public Order() {
-	}
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-	public Long getId() {
-		return id;
-	}
+    @Column(name = "order_number")
+    private String orderNumber;
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    @Column(name = "order_status")
+    private String status;
 
-	public String getOrderNumber() {
-		return orderNumber;
-	}
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "order_id")
+    private List<Pizza> pizzas;
 
-	public void setOrderNumber(String orderNumber) {
-		this.orderNumber = orderNumber;
-	}
+    public Order() {
+    }
 
-	public String getStatus() {
-		return status;
-	}
+    public Long getId() {
+	return id;
+    }
 
-	public void setStatus(String status) {
-		this.status = status;
-	}
+    public void setId(Long id) {
+	this.id = id;
+    }
 
-	public Pizza getPizza() {
-		return pizza;
-	}
+    public String getOrderNumber() {
+	return orderNumber;
+    }
 
-	public void setPizza(Pizza pizza) {
-		this.pizza = pizza;
-	}
+    public void setOrderNumber(String orderNumber) {
+	this.orderNumber = orderNumber;
+    }
 
-	public LocalDateTime getDateTime() {
-		return dateTime;
-	}
+    public String getStatus() {
+	return status;
+    }
 
-	public void setDateTime(LocalDateTime dateTime) {
-		this.dateTime = dateTime;
-	}
+    public void setStatus(String status) {
+	this.status = status;
+    }
 
-	@Override
-	public String toString() {
-		return "Order [id=" + id + ", orderNumber=" + orderNumber + ", status=" + status + ", pizza=" + pizza
-				+ ", dateTime=" + dateTime + "]";
-	}
+    public List<Pizza> getPizzas() {
+	return pizzas;
+    }
 
-	
-	
+    public void setPizzas(List<Pizza> pizzas) {
+	this.pizzas = pizzas;
+    }
+
 }

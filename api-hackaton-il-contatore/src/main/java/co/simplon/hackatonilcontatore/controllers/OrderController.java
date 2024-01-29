@@ -2,6 +2,7 @@ package co.simplon.hackatonilcontatore.controllers;
 
 import java.time.LocalDateTime;
 
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,13 +14,13 @@ import co.simplon.hackatonilcontatore.entities.Order;
 import co.simplon.hackatonilcontatore.repositories.OrderRepository;
 import java.util.List;
 
+@Service
 @RestController
 @RequestMapping("/orders")
 public class OrderController {
 	private final OrderRepository orderRepository;
 	
 	public OrderController(OrderRepository orderRepository) {
-		super();
 		this.orderRepository = orderRepository;
 	}
 	
@@ -43,7 +44,7 @@ public class OrderController {
 	public void findOrder() {	
 	}
 	
-	@DeleteMapping("delete/{id}")
+	@DeleteMapping("delete/{$id}")
 	public void deleteOrder() {
 		
 	}

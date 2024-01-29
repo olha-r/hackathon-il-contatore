@@ -2,6 +2,10 @@ package co.simplon.hackatonilcontatore.entities;
 
 import java.time.LocalDateTime;
 
+import org.hibernate.proxy.HibernateProxy;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -25,6 +29,9 @@ public class Order {
 	private Pizza pizza;
 	@Column(name = "date_time")
 	private LocalDateTime dateTime;
+	
+	@JsonIgnore
+    private HibernateProxy hibernateLazyInitializer;
 	
 	public Order() {
 	}
@@ -69,12 +76,18 @@ public class Order {
 		this.dateTime = dateTime;
 	}
 
+	public HibernateProxy getHibernateLazyInitializer() {
+		return hibernateLazyInitializer;
+	}
+
+	public void setHibernateLazyInitializer(HibernateProxy hibernateLazyInitializer) {
+		this.hibernateLazyInitializer = hibernateLazyInitializer;
+	}
+
 	@Override
 	public String toString() {
 		return "Order [id=" + id + ", orderNumber=" + orderNumber + ", status=" + status + ", pizza=" + pizza
-				+ ", dateTime=" + dateTime + "]";
+				+ ", dateTime=" + dateTime + ", hibernateLazyInitializer=" + hibernateLazyInitializer + "]";
 	}
-
-	
 	
 }

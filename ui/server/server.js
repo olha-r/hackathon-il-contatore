@@ -1,6 +1,33 @@
 // script.js
+
+document.querySelectorAll('input[name="ingredients"]').forEach(function (ingredientInput) {
+        ingredientInput.addEventListener('input', function () {
+            validateIngredients();
+        });
+    });
+
+    function validateIngredients() {
+        // Initialize a variable to track the total number of selected ingredients
+        let totalIngredients = 0;
+
+        document.querySelectorAll('input[name="ingredients"]').forEach(function (ingredientInput) {
+            const quantity = parseInt(ingredientInput.value);
+
+            // Check if the quantity is greater than 0
+            if (!isNaN(quantity) && quantity > 0) {
+                totalIngredients += quantity;
+            }
+        });
+
+        // Check if the total number of ingredients exceeds 6
+        if (totalIngredients > 6) {
+            alert('You can select a maximum of 6 ingredients.');
+            // Disable the submit button or take other actions to prevent form submission
+        }
+    }
 document.addEventListener('DOMContentLoaded', function () {
      const ingredientsArray = [];
+     
     document.querySelector('form').addEventListener('submit', function (event) {
         event.preventDefault(); // Prevent the default form submission
 
@@ -52,6 +79,8 @@ document.addEventListener('DOMContentLoaded', function () {
             }
             // Handle successful response (if needed)
             console.log('Order created successfully');
+            // Clear the form after successful submission
+            document.querySelector('form').reset();
         })
         .catch(error => {
             // Handle errors

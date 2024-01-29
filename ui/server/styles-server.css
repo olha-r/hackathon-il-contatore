@@ -51,3 +51,12 @@ h2{
     font-weight: 600;
     margin: 0;
 }
+.oil {
+    background-color: black;
+}
+
+.btn-validate {
+    background-color: white;
+    margin: 20px;
+
+}

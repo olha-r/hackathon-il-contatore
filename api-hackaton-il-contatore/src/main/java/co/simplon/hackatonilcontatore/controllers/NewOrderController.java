@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -61,5 +63,10 @@ public class NewOrderController {
 	String nextLetter = ROMAN_LETTERS.get(currentIndex);
 	currentIndex = (currentIndex + 1) % 26; // Reset to 0 if end is reached
 	return nextLetter;
+    }
+
+    @GetMapping("/order/{id}")
+    public NewOrder findOrder(@PathVariable("id") Long id) {
+	return newOrderRepository.findProjectedById(id);
     }
 }

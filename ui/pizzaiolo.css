@@ -1,0 +1,46 @@
+*{
+    background-color: black;
+    color: black;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 25px;
+}
+.commande_button{
+    margin: 20px;
+    border-radius: 10px;
+    border-color: white;
+    padding-left:20px;
+    padding-right: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    color: white;
+}
+
+.pret_button{
+    background-color:green;
+    margin: 20px;
+    border-radius: 10px;
+    border-color: white;
+    padding-left:20px;
+    padding-right: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    color: white;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo{
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.accordion{
+    border: 30px solid black;
+
+}

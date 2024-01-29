@@ -69,4 +69,12 @@ public class NewOrderController {
     public NewOrder findOrder(@PathVariable("id") Long id) {
 	return newOrderRepository.findProjectedById(id);
     }
+
+    @GetMapping("/find-all")
+    public List<NewOrder> listOrder() {
+	List<NewOrder> orders = newOrderRepository
+		.findAll();
+	return orders;
+
+    }
 }

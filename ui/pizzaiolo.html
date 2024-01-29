@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="pizzaiolo.css">
+    <script src="pizzaiolo.js"></script>
+    <title>Pizzaïolo</title>
+</head>
+<body>
+
+  <header>
+  <nav>
+    <div>
+          <img src="./ressources/logo.png" class="logo" alt="logo"/>
+    </div>      
+  </nav>
+  </header>
+
+  <div class="accordion" id="accordionExample">
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          # Commande N
+        </button>
+      </h2>
+      <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <ul class="list-group">
+            <li class="list-group-item">Taille: Piccola</li>
+            <li class="list-group-item">Forme: Calzone</li>
+            <li class="list-group-item">Bases: Sauce tomate</li>
+            <li class="list-group-item">Ingrédients: Aubergine, Tomate séchée, Mozarella, Oignon confit</li>
+          </ul>
+          <button class="commande_button">En préparation</button>
+          <button class="pret_button" >Prête</button>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          # Commande P
+        </button>
+      </h2>
+      <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <ul class="list-group">
+            <li class="list-group-item">Taille: Media</li>
+            <li class="list-group-item">Forme: Classica</li>
+            <li class="list-group-item">Bases: Mixte</li>
+            <li class="list-group-item">Ingrédients: Olive noire, Boeuf épicé, Champignons de Paris</li>
+          </ul>
+          <button class="commande_button">En préparation</button>
+          <button class="pret_button">Prête</button>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          # Commande T
+        </button>
+      </h2>
+      <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <ul class="list-group">
+            <li class="list-group-item">Taille: Grande</li>
+            <li class="list-group-item">Forme: Classica</li>
+            <li class="list-group-item">Bases: Aucune</li>
+            <li class="list-group-item">Ingrédients: Poulet, Artichaut, Poivron vert confit</li>
+          </ul>
+          <button class="commande_button">En préparation</button>            
+          <button class="pret_button">Prête</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

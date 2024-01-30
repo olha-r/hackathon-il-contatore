@@ -15,8 +15,8 @@ body {
   }
 
   .pizza {
-    width: 100%;
-    height: 100%;
+    width: 300px;
+    height: 100px;
     background-color:white;
     border-radius: 10px;
   }
@@ -32,7 +32,7 @@ body {
     width: 0;
     background-color: green;
     border-radius: 10px;
-    transition: width 700s linear;
+    transition: width 500s linear;
   }
   
   @keyframes bakePizza {
@@ -45,4 +45,33 @@ body {
     100% {
       width: 100%;
     }
+  }
+
+  @media only screen and (max-width: 600px) and (orientation: landscape) {
+    
+    body {
+      font-size: 14px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .progress-bar {
+      height: 10px;
+      display: flex;
+      justify-content: center;
+    }
+
+    img{
+      width: 1rem;
+      height: 1rem;
+      }
+
+      .pizza-container {
+        width: 100%;
+      }
+    
+      p{
+        font-size: 15px;
+      }
   }

@@ -1,32 +1,28 @@
-let res = document.querySelector('.quantity');
-result = parseInt(res.value,10);
+let quantities = document.querySelectorAll('.quantity');
 
-let plus = document.querySelector('.plus');
-let moins = document.querySelector('.moins');
+quantities.forEach(function (res) {
+    let result = parseInt(res.value, 10);
+    let plus = res.nextElementSibling;
+    let moins = res.previousElementSibling;
 
     // prendre en compte la modification du nombre au clavier
-    res.addEventListener('blur', function() {
-       result = document.querySelector('.quantity');
-			result = parseInt(result.value,10);
-            // result.forEach(element=>{
-            //     parseInt(element.value,10);
-            // })
+    res.addEventListener('blur', function () {
+        result = parseInt(res.value, 10);
     });
-    
+
     // boutton +
-    plus.addEventListener('click', function() {
-      if(result >= 0 && result < 2){
-       result++;
-       document.querySelector('.quantity').value= result;
-       }
+    plus.addEventListener('click', function () {
+        if (result >= 0 && result < 2) {
+            result++;
+            res.value = result;
+        }
     });
-    
-     // boutton -
-      moins.addEventListener('click', function() {
-      if(result > 0 && result <= 2){
-       result--;
-       document.querySelector('.quantity').value= result;
-       }
+
+    // boutton -
+    moins.addEventListener('click', function () {
+        if (result > 0 && result <= 2) {
+            result--;
+            res.value = result;
+        }
     });
-    
-    
+});

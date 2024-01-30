@@ -55,7 +55,7 @@ The primary focus of this application is to streamline the overall order process
 
 4. **In Eclipse add in hackaton-il-contatore/src/main/resources/application.properties**
 ```
-spring.datasource.url=jdbc:postgresql://localhost:5432/ilcontatore_new
+spring.datasource.url=jdbc:postgresql://localhost:5432/hackathon24
 spring.datasource.username=postgres
 spring.datasource.password=<YOUR-DATABASE-ADMIN-PASSWORD>
 ```

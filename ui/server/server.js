@@ -25,9 +25,34 @@ document.querySelectorAll('input[name="ingredients"]').forEach(function (ingredi
             // Disable the submit button or take other actions to prevent form submission
         }
     }
-document.addEventListener('DOMContentLoaded', function () {
-     const ingredientsArray = [];
-     
+    document.addEventListener('DOMContentLoaded', function () {
+    const ingredientsArray = [];
+
+    // Initialize variables for the Roman alphabet letters
+    const ROMAN_LETTERS = createRomanAlphabetList();
+    let currentIndex = 0;
+
+    // Function to create an array of Roman alphabet letters
+    function createRomanAlphabetList() {
+        const alphabet = [];
+        for (let letter = 'A'.charCodeAt(0); letter <= 'Z'.charCodeAt(0); letter++) {
+            alphabet.push(String.fromCharCode(letter));
+        }
+        return alphabet;
+    }
+
+    // Function to get the next Roman alphabet letter
+    function getNextRomanLetter() {
+        const nextLetter = ROMAN_LETTERS[currentIndex];
+        currentIndex = (currentIndex + 1) % 26; // Reset to 0 if end is reached
+        return nextLetter;
+    }
+
+    // Function to generate the commandeNumber with only letters
+    function generateCommandeNumber() {
+        return getNextRomanLetter();
+    }
+
     document.querySelector('form').addEventListener('submit', function (event) {
         event.preventDefault(); // Prevent the default form submission
 
@@ -38,10 +63,9 @@ document.addEventListener('DOMContentLoaded', function () {
         // Get the selected type
         const type = document.querySelector('input[name="type"]:checked').value;
 
-       
         document.querySelectorAll('input[name="ingredients"]').forEach(function (ingredientInput) {
             const quantity = ingredientInput.value;
-            const name = ingredientInput.id; 
+            const name = ingredientInput.id;
 
             // Check if the quantity is greater than 0
             if (quantity > 0) {
@@ -59,9 +83,10 @@ document.addEventListener('DOMContentLoaded', function () {
             size: size,
             base: base,
             shape: type,
-            ingredients: ingredientsArray ,
+            ingredients: ingredientsArray,
             oil: oil,
-            price: price
+            price: price,
+            orderNumber: generateCommandeNumber(),
         };
         console.log("Payload", payload);
 
@@ -73,18 +98,18 @@ document.addEventListener('DOMContentLoaded', function () {
             },
             body: JSON.stringify(payload),
         })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            // Handle successful response (if needed)
-            console.log('Order created successfully');
-            // Clear the form after successful submission
-            document.querySelector('form').reset();
-        })
-        .catch(error => {
-            // Handle errors
-            console.error('There was a problem with the fetch operation:', error);
-        });
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                // Handle successful response (if needed)
+                console.log('Order created successfully');
+                // Clear the form after successful submission
+                document.querySelector('form').reset();
+            })
+            .catch(error => {
+                // Handle errors
+                console.error('There was a problem with the fetch operation:', error);
+            });
     });
 });

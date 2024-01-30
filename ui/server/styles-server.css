@@ -104,20 +104,7 @@ input[type="button"], input[type="text"]{
     /* background-color: white; */
     margin: 20px;
 }
-#submit, #newPizza {
-    background: linear-gradient(to right, #009246, #ffffff, #ce2b37);
-    color: black;
-    border: 2px solid #ce2b37;
-    padding: 15px 5px;
-    font-size: 18px;
-    font-weight: bold;
-    border-radius: 8px;
-    cursor: pointer;
-    display: block;
-    margin: 0 auto;
-    text-align: center;
-    width: 200px;
-  }
+
   .pizza-card {
     width: calc(33.33% - 20px); /* One-third of the page width with some margin */
     /* border: 1px solid #ccc; */
@@ -135,4 +122,20 @@ input[type="button"], input[type="text"]{
     font-size: 18px;
     font-weight: bold;
     margin-bottom: 10px;
+  }
+
+  #submit, #newPizza {
+    background: linear-gradient(to right, #009246, #ffffff, #ce2b37);
+    color: black;
+    border: 2px solid #ce2b37;
+    
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto 15px auto;
+    text-align: center;
+    width: 200px;
+    height: 70px;
   }

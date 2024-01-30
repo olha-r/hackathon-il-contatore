@@ -1,31 +1,5 @@
-// script.js
-
-document.querySelectorAll('input[name="ingredients"]').forEach(function (ingredientInput) {
-        ingredientInput.addEventListener('input', function () {
-            validateIngredients();
-        });
-    });
-
-    function validateIngredients() {
-        // Initialize a variable to track the total number of selected ingredients
-        let totalIngredients = 0;
-
-        document.querySelectorAll('input[name="ingredients"]').forEach(function (ingredientInput) {
-            const quantity = parseInt(ingredientInput.value);
-
-            // Check if the quantity is greater than 0
-            if (!isNaN(quantity) && quantity > 0) {
-                totalIngredients += quantity;
-            }
-        });
-
-        // Check if the total number of ingredients exceeds 6
-        if (totalIngredients > 6) {
-            alert('You can select a maximum of 6 ingredients.');
-            // Disable the submit button or take other actions to prevent form submission
-        }
-    }
-    document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function () {
+    const ordersArray = [];
     const ingredientsArray = [];
 
     // Initialize variables for the Roman alphabet letters
@@ -52,45 +26,7 @@ document.querySelectorAll('input[name="ingredients"]').forEach(function (ingredi
     function generateCommandeNumber() {
         return getNextRomanLetter();
     }
-
-    document.querySelector('form').addEventListener('submit', function (event) {
-        event.preventDefault(); // Prevent the default form submission
-
-        // Get the selected values from checkboxes
-        const size = document.querySelector('input[name="size"]:checked').value;
-        const base = document.querySelector('input[name="base"]:checked').value;
-
-        // Get the selected type
-        const type = document.querySelector('input[name="type"]:checked').value;
-
-        document.querySelectorAll('input[name="ingredients"]').forEach(function (ingredientInput) {
-            const quantity = ingredientInput.value;
-            const name = ingredientInput.id;
-
-            // Check if the quantity is greater than 0
-            if (quantity > 0) {
-                const ingredientString = `${name}: ${quantity}`;
-                ingredientsArray.push(ingredientString);
-            }
-        });
-
-        // Get the selected sauce
-        const oil = document.getElementById('saucePimentee').checked;
-        const price = 10;
-
-        // Create the payload to send to the server
-        const payload = {
-            size: size,
-            base: base,
-            shape: type,
-            ingredients: ingredientsArray,
-            oil: oil,
-            price: price,
-            orderNumber: generateCommandeNumber(),
-        };
-        console.log("Payload", payload);
-
-        // Make a POST request to the server
+    function createOrder(payload) {
         fetch('http://localhost:8080/new-order', {
             method: 'POST',
             headers: {
@@ -102,14 +38,85 @@ document.querySelectorAll('input[name="ingredients"]').forEach(function (ingredi
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
-                // Handle successful response (if needed)
                 console.log('Order created successfully');
-                // Clear the form after successful submission
-                document.querySelector('form').reset();
             })
             .catch(error => {
-                // Handle errors
                 console.error('There was a problem with the fetch operation:', error);
             });
+            
+    }
+
+    function resetFormAndShowCard() {
+        const size = document.querySelector('input[name="size"]:checked').value;
+        const base = document.querySelector('input[name="base"]:checked').value;
+        const type = document.querySelector('input[name="type"]:checked').value;
+
+        ingredientsArray.length = 0;
+
+        document.querySelectorAll('input[name="ingredients"]').forEach(function (ingredientInput) {
+            const quantity = ingredientInput.value;
+            const name = ingredientInput.id;
+
+            if (quantity > 0) {
+                const ingredientString = `${name}: ${quantity}`;
+                ingredientsArray.push(ingredientString);
+            }
+        });
+
+        const oil = document.getElementById('saucePimentee').checked;
+        const price = 10;
+
+        const orderNumber = generateCommandeNumber();
+            const orderPayload = {
+            size: size,
+            base: base,
+            shape: type,
+            ingredients: ingredientsArray,
+            oil: oil,
+            price: price,
+            orderNumber: orderNumber,
+        };
+
+        // Store the order payload in the array
+        ordersArray.push(orderPayload);
+        
+        const pizzaCard = document.createElement('div');
+        pizzaCard.classList.add('pizza-card');
+
+        // Display the orderNumber at the top of the card
+        const orderNumberElement = document.createElement('p');
+        orderNumberElement.classList.add('order-number');
+        orderNumberElement.textContent = `Commande #${orderNumber}`;
+        pizzaCard.appendChild(orderNumberElement);
+
+        const pizzaDetails = document.createElement('div');
+        pizzaDetails.classList.add('pizza-details');
+
+        pizzaDetails.innerHTML = `
+            <p><strong>Taille:</strong> ${size}</p>
+            <p><strong>Base:</strong> ${base}</p>
+            <p><strong>Type:</strong> ${type}</p>
+            <p><strong>Ingrédients:</strong> ${ingredientsArray.join(', ')}</p>
+            <p><strong>Sauce pimentée:</strong> ${oil ? 'Oui' : 'Non'}</p>
+            <p><strong>Prix:</strong> ${price} €</p>
+        `;
+
+        pizzaCard.appendChild(pizzaDetails);
+const orderCards = document.getElementsByClassName("order-cards")[0];
+        orderCards.appendChild(pizzaCard);
+    }
+    document.getElementById('newPizza').addEventListener('click', function (event) {
+        event.preventDefault();
+        resetFormAndShowCard();
+        document.querySelector('form').reset();
     });
+    document.querySelector('#submit').addEventListener('click', function (event) {
+                event.preventDefault();
+                ordersArray.forEach(order => {
+                    createOrder(order);
+                });
+                ordersArray.length = 0;
+            });
+
+
 });

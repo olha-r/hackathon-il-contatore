@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="styles-server.css">
     <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"> -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous" defer></script>
+    <script src="max-ingredients.js" defer></script>
     <script src="server.js" defer></script>
 </head>
 <body>
@@ -207,15 +208,18 @@
             </div>
         </div>
         <div class="button btn-validate">
-            <input id="submit"   type="submit" value="Valider cette pizza" >
-            <input id="newPizza" type="text" value="Nouvelle pizza" name="" id="">
+            <input id="newPizza" type="button" value="Nouvelle pizza">
         </div>
-
+        
     </form>
+    <div class="order-cards">
+
+    </div>
+    <input id="submit"   type="button" value="Valider la commande" >
 </body>
 </html>
 <style>
-  #submit {
+  #submit, #newPizza {
     background: linear-gradient(to right, #009246, #ffffff, #ce2b37);
     color: #333;
     border: 2px solid #ce2b37;
@@ -226,6 +230,24 @@
     cursor: pointer;
     display: block;
     margin: 0 auto;
+  }
+  .pizza-card {
+    width: calc(33.33% - 20px); /* One-third of the page width with some margin */
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin: 20px 10px; /* Adjusted margin for better spacing */
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+    float: left; /* Float the cards to display them in a row */
+    background-color: white;
+  }
+
+  .pizza-details {
+    font-size: 16px;
+  }
+  .order-number {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
   }
 </style>
 

@@ -208,7 +208,12 @@ document.querySelector('input[name="type"][value="' + type.trim() + '"]').checke
                 const orderCardsContainer = document.getElementsByClassName("order-cards")[0];
                 orderCardsContainer.innerHTML = "";
                 ordersArray.length = 0;
+                let apparition = document.querySelector(".qrcode");
+                console.log(apparition);
+                apparition.classList.remove("qrcode");
+                apparition.classList.add("qrcode-visible");
             });
+
 
 
             const orderCardsContainer = document.getElementsByClassName("order-cards")[0];

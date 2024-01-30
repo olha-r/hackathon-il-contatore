@@ -145,3 +145,17 @@ input[type="button"], input[type="text"]{
 /*.price-card{
     color: white;
 }*/
+.qrcode {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+
+.qrcode-visible {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

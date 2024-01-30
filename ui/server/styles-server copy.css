@@ -1,0 +1,78 @@
+*{
+    font-family: 'Times New Roman', Times, serif;
+    /* background-color: black; */
+}
+body{
+    margin: 0;
+    background-color: black;
+}
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container{
+    width: 70%;
+    margin: 0;
+    /* padding: 20px; */
+}
+h2{
+    text-align: center;
+    color: white;
+    margin: 30px 0 0;
+    background-color: rgba(189, 215, 216, 0.534);
+    margin: 0 20px 0;
+}
+.col{
+    margin: 10px;
+    width: 100px;
+}
+label{
+    display: block;
+    width: 100%;
+}
+input[type="radio"]{
+    width: 30px;
+    height: 30px;
+    margin: 0;
+}
+.row{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 20px;
+    width: 100%;
+    height: auto;
+    background-color: white;
+    justify-content: space-evenly;
+    color: black;
+    text-align: center;
+}
+.col{
+    margin: 10px;
+}
+.pizza{
+    width: 100px;
+    height: 100px;
+    display: flex;
+    margin: auto;
+}
+.pizza img{
+    margin: auto;
+}
+.base, .type, .ingrédient{
+    width: 60px;
+    height: 60px;
+}
+.descript{
+    font-weight: 600;
+    margin: 0;
+}
+.oil {
+    background-color: black;
+}
+
+.btn-validate {
+    background-color: white;
+    margin: 20px;
+
+}

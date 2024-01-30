@@ -1,6 +1,6 @@
 package co.simplon.hackatonilcontatore.entities;
 
-import java.time.LocalDateTime;
+import java.util.List;
 
 import org.hibernate.proxy.HibernateProxy;
 
@@ -8,10 +8,11 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -36,45 +37,42 @@ public class Order {
 	public Order() {
 	}
 
-	public Long getId() {
-		return id;
-	}
+    @Column(name = "order_number")
+    private String orderNumber;
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    @Column(name = "order_status")
+    private String status;
 
-	public String getOrderNumber() {
-		return orderNumber;
-	}
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "order_id")
+    private List<Pizza> pizzas;
 
-	public void setOrderNumber(String orderNumber) {
-		this.orderNumber = orderNumber;
-	}
+    public Order() {
+    }
 
-	public String getStatus() {
-		return status;
-	}
+    public Long getId() {
+	return id;
+    }
 
-	public void setStatus(String status) {
-		this.status = status;
-	}
+    public void setId(Long id) {
+	this.id = id;
+    }
 
-	public Pizza getPizza() {
-		return pizza;
-	}
+    public String getOrderNumber() {
+	return orderNumber;
+    }
 
-	public void setPizza(Pizza pizza) {
-		this.pizza = pizza;
-	}
+    public void setOrderNumber(String orderNumber) {
+	this.orderNumber = orderNumber;
+    }
 
-	public LocalDateTime getDateTime() {
-		return dateTime;
-	}
+    public String getStatus() {
+	return status;
+    }
 
-	public void setDateTime(LocalDateTime dateTime) {
-		this.dateTime = dateTime;
-	}
+    public void setStatus(String status) {
+	this.status = status;
+    }
 
 	public HibernateProxy getHibernateLazyInitializer() {
 		return hibernateLazyInitializer;

@@ -7,18 +7,21 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "pizza")
-public class Pizza {
+@Table(name = "new_order")
+public class NewOrder {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private Long id;
+
+    @Column(name = "order_number")
+    private String orderNumber;
+
+    @Column(name = "order_status")
+    private String status;
 
     @Column(name = "pizza_size")
     private String size;
@@ -29,17 +32,16 @@ public class Pizza {
     @Column(name = "base")
     private String base;
 
-    @ManyToMany
-    @JoinTable(name = "pizza_ingredients", joinColumns = @JoinColumn(name = "pizza_id"), inverseJoinColumns = @JoinColumn(name = "ingredient_id"))
-    private List<Ingredient> ingredients;
+    @Column(name = "ingredients")
+    private List<String> ingredients;
 
     @Column(name = "oil")
-    private Long oil;
+    private Boolean oil;
 
     @Column(name = "price")
     private double price;
 
-    public Pizza() {
+    public NewOrder() {
     }
 
     public Long getId() {
@@ -48,6 +50,22 @@ public class Pizza {
 
     public void setId(Long id) {
 	this.id = id;
+    }
+
+    public String getOrderNumber() {
+	return orderNumber;
+    }
+
+    public void setOrderNumber(String orderNumber) {
+	this.orderNumber = orderNumber;
+    }
+
+    public String getStatus() {
+	return status;
+    }
+
+    public void setStatus(String status) {
+	this.status = status;
     }
 
     public String getSize() {
@@ -74,20 +92,19 @@ public class Pizza {
 	this.base = base;
     }
 
-    public List<Ingredient> getIngredients() {
+    public List<String> getIngredients() {
 	return ingredients;
     }
 
-    public void setIngredients(
-	    List<Ingredient> ingredients) {
+    public void setIngredients(List<String> ingredients) {
 	this.ingredients = ingredients;
     }
 
-    public Long getOil() {
+    public Boolean getOil() {
 	return oil;
     }
 
-    public void setOil(Long oil) {
+    public void setOil(Boolean oil) {
 	this.oil = oil;
     }
 
@@ -97,6 +114,14 @@ public class Pizza {
 
     public void setPrice(double price) {
 	this.price = price;
+    }
+
+    @Override
+    public String toString() {
+	return String.format(
+		"{id=%s, orderNumber=%s, status=%s, size=%s, shape=%s, base=%s, ingredients=%s, oil=%s, price=%s}",
+		id, orderNumber, status, size, shape, base,
+		ingredients, oil, price);
     }
 
 }

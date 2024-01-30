@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>serveur</title>
+    <link rel="stylesheet" href="styles-server.css">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"> -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous" defer></script>
+    <script src="max-ingredients.js" defer></script>
+    <script src="server.js" defer></script>
+    <script src="formulaire.js" defer></script>
+    <!-- Add this script tag to include the qrcode.js library -->
+
+</head>
+<body>
+    <header>
+        <nav>
+          <div>
+            <img src="../img/logo.png" class="logo" alt="logo" width="100"/>
+          </div>      
+        </nav>
+    </header>
+  
+    <form id="pizzaForm">
+        <div class="container"> <!-- choose size of your pizza -->
+            <h2>Taille</h2>
+            <div class="row">
+                <div class="col">
+                    <div class="pizza">
+                        <img src="../img/pizza.png" width="50" height="50">
+                    </div>
+                    <label for="piccola" class="descript" >piccola</label>
+                    <input type="radio" name="size" id="piccola" value="piccola" data-price="9.20" required>
+                </div>
+                <div class="col">
+                    <div class="pizza">
+                        <img src="../img/pizza.png" width="75" height="75">
+                    </div>
+                    <label for="media" class="descript">media</label>
+                    <input type="radio" name="size" id="media" value="media" data-price="11.20" required>
+                </div>
+                <div class="col">
+                    <div class="pizza">
+                        <img src="../img/pizza.png" width="100" height="100">
+                    </div>
+                    <label for="grande" class="descript">grande</label>
+                    <input type="radio" name="size" id="grande" value="grande" data-price="13.20" required>
+                </div>
+            </div>
+        </div>
+        <div class="container"> <!-- choose ur base -->
+            <h2>Base</h2>
+            <div class="row">
+                <div class="col">
+                    <img class="base" src="../img/croix-removebg-preview.png" alt="">
+                    <label for="aucune" class="descript">aucune</label>
+                    <input required type="radio" name="base" id="aucune" value="aucune" data-price="0.00">
+                </div>
+                <div class="col">
+                    <img class="base" src="../img/sauce-tomate.png" alt="">
+                    <label for="tomate" class="descript">tomate</label>
+                    <input required type="radio" name="base" id="tomate" value="tomate" data-price="0.80">
+                </div>
+                <div class="col">
+                    <img class="base" src="../img/creme-fraiche.png" alt="">
+                    <label for="crèmefraiche" class="descript">crème fraîche</label>
+                    <input required type="radio" name="base" id="crèmefraiche" value="crème fraiche" data-price="0.80">
+                </div>
+                <div class="col">
+                    <img class="base" src="../img/mixte.png" alt="">
+                    <label for="mixte" class="descript">mixte</label>
+                    <input required type="radio" name="base" id="mixte" value="mixte" data-price="0.80">
+                </div>
+            </div>
+        </div>
+
+        <div class="container"> <!-- choose ur type -->
+            <h2>Type</h2>
+            <div class="row">
+                <div class="col">
+                    <img class="type" src="../img/pizza.png" alt="">
+                    <label for="classica" class="descript">Classica</label>
+                    <input required type="radio" value="classica" name="type" id="classica">
+                </div>
+                <div class="col">
+                    <img class="type" src="../img/calzone.png" alt="">
+                    <label for="calzone" class="descript">Calzone</label>
+                    <input required type="radio" value="calzone" name="type" id="calzone">
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <h2>Ingrédients</h2>
+            <div class="row">
+                <div class="col">
+                    <img class="ingrédient" src="../img/tomate.png" alt="">
+                    <label for="tomate fraiche" class="descript">Tomate fraîche</label>
+                    <!-- <input class="quantity" type="text" name="ingredients" value="" id="tomate fraiche"> -->
+                    <input class="moins" type="button" value="-" />
+                    <input id ="tomate fraiche" class="quantity" type="text" value="0" name="ingredients" data-price="0.80"/>
+                    <input class="plus" type="button" value="+" />
+                </div>
+                <div class="col">
+                    <img class="ingrédient" src="../img/tomate_confite-removebg-preview.png" alt="">
+                    <label for="tomate confite" class="descript">Tomate confite</label>
+                    <input class="moins" type="button" value="-" />
+                    <input class="quantity" type="text" name="ingredients"  value="0" id="tomate confite" data-price="0.80">
+                    <input class="plus" type="button" value="+" />
+                </div>
+                <div class="col">
+                    <img class="ingrédient" src="../img/tomate_séchée-removebg-preview.png" alt="">
+                    <label for="tomate séchée" class="descript">Tomate séchée</label>
+                    <input class="moins" type="button" value="-" />
+                    <input class="quantity" type="text" name="ingredients"  value="0" id="tomate séchée" data-price="0.80">
+                    <input class="plus" type="button" value="+" />
+                </div>
+                <div class="col">
+                    <img class="ingrédient" src="../img/asperges.png" alt="">
+                    <label for="asperge" class="descript">Asperge</label>
+                    <input class="moins" type="button" value="-" />
+                    <input class="quantity" type="text" name="ingredients"   value="0" id="asperge" data-price="0.80">
+                    <input class="plus" type="button" value="+" />
+                </div>
+                <div class="col">
+                    <img class="ingrédient" src="../img/jambonBlanc.png" alt="">
+                    <label for="Jambon blanc" class="descript">Jambon blanc</label>
+                    <input class="moins" type="button" value="-" />
+                    <input class="quantity" type="text" name="ingredients"   value="0" id="Jambon blanc" data-price="0.80">
+                    <input class="plus" type="button" value="+" />
+                </div>
+                <div class="col">
+                    <img class="ingrédient" src="../img/poulet-removebg-preview.png" alt="">
+                    <label for="Poulet" class="descript">Poulet</label>
+                    <input class="moins" type="button" value="-" />
+                    <input class="quantity" type="text" name="ingredients"   value="0" id="Poulet" data-price="0.80">
+                    <input class="plus" type="button" value="+" />
+                </div>
+                <div class="col">
+                    <img class="ingrédient" src="../img/jambonCru.png" alt="">
+                    <label for="Jambon cru" class="descript">Jambon cru</label>
+                    <input class="moins" type="button" value="-" />
+                    <input class="quantity" type="text" name="ingredients"   value="0" id="Jambon cru" data-price="0.80">
+                    <input class="plus" type="button" value="+" />
+                </div>
+                <div class="col">
+                    <img class="ingrédient" src="../img/aubergine.png" alt="">
+                    <label for="Aubergine grillée" class="descript">Aubergine grillée</label>
+                    <input class="moins" type="button" value="-" />
+                    <input class="quantity" type="text" min="0" max="2"name="ingredients"   value="0" id="Aubergine grillée" data-price="0.80">
+                    <input class="plus" type="button" value="+" />
+                </div>
+                <div class="col">
+                    <img class="ingrédient" src="../img/parmesan-removebg-preview.png" alt="">
+                    <label for="Parmesan" class="descript">Parmesan</label>
+                    <input class="moins" type="button" value="-" />
+                    <input class="quantity" type="text" name="ingredients"   value="0" id="Parmesan" data-price="0.80">
+                    <input class="plus" type="button" value="+" />
+                </div>
+                <div class="col">
+                    <img class="ingrédient" src="../img/moza-removebg-preview.png" alt="">
+                    <label for="Mozzarella" class="descript">Mozzarella</label>
+                    <input class="moins" type="button" value="-" />
+                    <input class="quantity" type="text" name="ingredients"   value="0" id="Mozzarella" data-price="0.80">
+                    <input class="plus" type="button" value="+" />
+                </div>
+                <div class="col">
+                    <img class="ingrédient" src="../img/boeuf-removebg-preview.png" alt="">
+                    <label for="Boeuf épicé" class="descript">Boeuf épicé</label>
+                    <input class="moins" type="button" value="-" />
+                    <input class="quantity" type="text" name="ingredients"  value="0" id="Boeuf épicé" data-price="0.80">
+                    <input class="plus" type="button" value="+" />
+                </div>
+                <div class="col">
+                    <img class="ingrédient" src="../img/olive_verte-removebg-preview.png" alt="">
+                    <label for="Olive verte" class="descript">Olive verte</label>
+                    <input class="moins" type="button" value="-" />
+                    <input class="quantity" type="text" name="ingredients"   value="0" id="Olive verte" data-price="0.80">
+                    <input class="plus" type="button" value="+" />
+                </div>
+                <div class="col">
+                    <img class="ingrédient" src="../img/olive_noire-removebg-preview.png" alt="">
+                    <label for="Olive noire" class="descript">Olive noire</label>
+                    <input class="moins" type="button" value="-" />
+                    <input class="quantity" type="text" name="ingredients"  value="0" id="Olive noire" data-price="0.80">
+                    <input class="plus" type="button" value="+" />
+                </div>
+                <div class="col">
+                    <img class="ingrédient" src="../img/champi-removebg-preview.png" alt="">
+                    <label for="Champignon de Paris" class="descript">Champignon de Paris</label>
+                    <input class="moins" type="button" value="-" />
+                    <input class="quantity" type="text" name="ingredients"   value="0" id="Champignon de Paris" data-price="0.80">
+                    <input class="plus" type="button" value="+" />
+                </div>
+                <div class="col">
+                    <img class="ingrédient" src="../img/gorgonzola-removebg-preview.png" alt="">
+                    <label for="Gorgonzola" class="descript">Gorgonzola</label>
+                    <input class="moins" type="button" value="-" />
+                    <input class="quantity" type="text" name="ingredients"   value="0" id="Gorgonzola" data-price="0.80">
+                    <input class="plus" type="button" value="+" />
+                </div>
+                <div class="col">
+                    <img class="ingrédient" src="../img/oignonCru-removebg-preview.png" alt="">
+                    <label for="Oignon cru" class="descript">Oignon cru</label>
+                    <input class="moins" type="button" value="-" />
+                    <input class="quantity" type="text" name="ingredients"  value="0" id="Oignon cru" data-price="0.80">
+                    <input class="plus" type="button" value="+" />
+                </div>
+                <div class="col">
+                    <img class="ingrédient" src="../img/oignon_confit-removebg-preview.png" alt="">
+                    <label for="Oignon confit" class="descript">Oignon confit</label>
+                    <input class="moins" type="button" value="-" />
+                    <input class="quantity" type="text" name="ingredients"   value="0" id="Oignon confit" data-price="0.80">
+                    <input class="plus" type="button" value="+" />
+                </div>
+                <div class="col">
+                    <img class="ingrédient" src="../img/poivronVert-removebg-preview.png" alt="">
+                    <label for="Poivron vert cru" class="descript">Poivron vert cru</label>
+                    <input class="moins" type="button" value="-" />
+                    <input class="quantity" type="text" name="ingredients"   value="0" id="Poivron vert cru" data-price="0.80">
+                    <input class="plus" type="button" value="+" />
+                </div>
+                <div class="col">
+                    <img class="ingrédient" src="../img/poivronRouge-removebg-preview.png" alt="">
+                    <label for="Poivron rouge cru" class="descript">Poivron rouge cru</label>
+                    <input class="moins" type="button" value="-" />
+                    <input class="quantity" type="text" name="ingredients"   value="0" id="Poivron rouge cru" data-price="0.80">
+                    <input class="plus" type="button" value="+" />
+                </div>
+                <div class="col">
+                    <img class="ingrédient" src="../img/poivronVert-removebg-preview.png" alt="">
+                    <label for="Poivron vert confit" class="descript">Poivron vert confit</label>
+                    <input class="moins" type="button" value="-" />
+                    <input class="quantity" type="text" name="ingredients"   value="0" id="Poivron vert confit" data-price="0.80">
+                    <input class="plus" type="button" value="+" />
+                </div>
+                <div class="col">
+                    <img class="ingrédient" src="../img/poivronRouge-removebg-preview.png" alt="">
+                    <label for="Poivron rouge confit" class="descript">Poivron rouge confit</label>
+                    <input class="moins" type="button" value="-" />
+                    <input class="quantity" type="text" name="ingredients"   value="0" id="Poivron rouge confit" data-price="0.80">
+                    <input class="plus" type="button" value="+" />
+                </div>
+                <div class="col">
+                    <img class="ingrédient" src="../img/artichaut-removebg-preview.png" alt="">
+                    <label for="Artichaut" class="descript">Artichaut</label>
+                    <input class="moins" type="button" value="-" />
+                    <input class="quantity" type="text" name="ingredients"  value="0" id="Artichaut" data-price="0.80">
+                    <input class="plus" type="button" value="+" />
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <h2>Sauce pimentée</h2>
+            <div class="row">
+                <div class="col">
+                    <img src="../img/spicySauce.png" height="100" width="100">
+                    <input class="quantity" type="checkbox" name="oil" id="saucePimentee">
+                </div>
+            </div>
+        </div>
+        <div class="button btn-validate">
+            <input id="newPizza" type="button" value="Ajouter pizza">
+        </div>
+    </form>
+    <div class="order-cards">
+
+    </div>
+    <input id="submit"   type="button" value="Valider la commande" >
+</body>
+</html>
+
+
+
+

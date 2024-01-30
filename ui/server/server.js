@@ -119,8 +119,39 @@ const orderCards = document.getElementsByClassName("order-cards")[0];
         }
         console.log(ordersArray);
     });
+const updateButton = document.createElement('button');
+    updateButton.textContent = 'Update Pizza';
+    updateButton.addEventListener('click', function () {
+        // Populate the form with values from the card
+        document.querySelector('input[name="size"][value="' + size.trim() + '"]').checked = true;
+document.querySelector('input[name="base"][value="' + base.trim() + '"]').checked = true;
+document.querySelector('input[name="type"][value="' + type.trim() + '"]').checked = true;
+
+
+        // Populate ingredients in the form
+        ingredientsArray.forEach(ingredientString => {
+    const [name, quantity] = ingredientString.trim().split(':');
+    const ingredientInput = document.getElementById(name.trim());
+    if (ingredientInput) {
+        ingredientInput.value = quantity.trim();
+    }
+});
+
+        // Set the saucePimentee checkbox
+        document.getElementById('saucePimentee').checked = oil;
+
+        // Remove the card from the DOM
+        pizzaCard.remove();
+
+        // Find and remove the corresponding payload from ordersArray
+        const indexToRemove = ordersArray.findIndex(order => order.orderNumber === orderNumber);
+        if (indexToRemove !== -1) {
+            ordersArray.splice(indexToRemove, 1);
+        }
+    });
 
     pizzaCard.appendChild(removeButton);
+    pizzaCard.appendChild(updateButton);
     }
     document.getElementById('newPizza').addEventListener('click', function (event) {
         event.preventDefault();

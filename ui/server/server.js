@@ -115,6 +115,10 @@ const orderCards = document.getElementsByClassName("order-cards")[0];
                 ordersArray.forEach(order => {
                     createOrder(order);
                 });
+
+
+                const orderCardsContainer = document.getElementsByClassName("order-cards")[0];
+                orderCardsContainer.innerHTML = "";
                 ordersArray.length = 0;
             });
 

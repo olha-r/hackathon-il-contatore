@@ -46,7 +46,8 @@ label{
     justify-content: center;
 }
 .quantity{
-    width: 20px;
+    width: 30px;
+    height: 30px;
     text-align: center;
 }
 .pizza{
@@ -89,8 +90,14 @@ input[type="radio"], input[type="checkbox"]{
     height: 30px;
     margin: 0;
 }
-input[type="button"]{
-    color: white;
+input[type="button"], input[type="text"]{
+    margin: 0;
+    padding: 0;
+    color: black;
+    height: 30px;
+    width: 30px;
+    border-width: 0;
+    font-size: large;
 }
 
 .btn-validate {

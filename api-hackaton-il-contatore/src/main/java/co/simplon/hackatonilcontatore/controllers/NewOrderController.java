@@ -35,7 +35,7 @@ public class NewOrderController {
     @PostMapping
     public void createOrder(@RequestBody NewOrder inputs) {
 	NewOrder order = new NewOrder();
-	order.setOrderNumber(getNextRomanLetter());
+	order.setOrderNumber(inputs.getOrderNumber());
 	order.setStatus("en cours");
 	order.setSize(inputs.getSize());
 	order.setShape(inputs.getShape());

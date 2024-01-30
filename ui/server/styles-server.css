@@ -12,19 +12,21 @@ nav {
     align-items: center;
 }
 .container{
-    width: 100%;
+    width: 70%;
     margin: 0;
-    /* padding: 20px; */
+    margin: auto;
 }
 h2{
     text-align: center;
     color: white;
+    margin: 30px 0 0;
+    background-color: rgba(189, 215, 216, 0.534);
+    margin: 0 30px 0;
 }
 .row{
     display: flex;
     flex-wrap: wrap;
-    margin: 20px;
-    width: 100%;
+    margin: 0 30px 30px;
     height: auto;
     background-color: white;
     justify-content: space-evenly;
@@ -33,6 +35,20 @@ h2{
 }
 .col{
     margin: 10px;
+    width: 100px;
+}
+label{
+    display: inline-block;
+    /* vertical-align: middle; */
+    width: 100%;
+    height: 40px;
+    margin: auto;
+    justify-content: center;
+}
+.quantity{
+    width: 30px;
+    height: 30px;
+    text-align: center;
 }
 .pizza{
     width: 100px;
@@ -49,14 +65,77 @@ h2{
 }
 .descript{
     font-weight: 600;
+}
+form{
+    flex-direction: column;
+    margin: auto;
+    display: flex;
+}
+.button{
+    text-align: center;
+    gap: 10px;
+}
+#submit, #newPizza{
+    background-color: grey;
+    text-align: center;
+    width: 150px;
+    padding: 5px;
+    font-size: large;
+    margin-bottom: 20px;
+    color: white;
+    font-weight: 700;
+}
+input[type="radio"], input[type="checkbox"]{
+    width: 30px;
+    height: 30px;
     margin: 0;
 }
-.oil {
-    background-color: black;
+input[type="button"], input[type="text"]{
+    margin: 0;
+    padding: 0;
+    color: black;
+    height: 30px;
+    width: 30px;
+    border-width: 0;
+    font-size: large;
 }
 
 .btn-validate {
-    background-color: white;
+    /* background-color: white; */
     margin: 20px;
-
 }
+
+  .pizza-card {
+    width: calc(33.33% - 20px); /* One-third of the page width with some margin */
+    /* border: 1px solid #ccc; */
+    padding: 20px;
+    margin: 20px 10px; /* Adjusted margin for better spacing */
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+    float: left; /* Float the cards to display them in a row */
+    background-color: white;
+  }
+
+  .pizza-details {
+    font-size: 16px;
+  }
+  .order-number {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  #submit, #newPizza {
+    background: linear-gradient(to right, #009246, #ffffff, #ce2b37);
+    color: black;
+    border: 2px solid #ce2b37;
+    
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto 15px auto;
+    text-align: center;
+    width: 200px;
+    height: 70px;
+  }

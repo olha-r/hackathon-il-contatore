@@ -130,7 +130,7 @@ document.querySelector('input[name="type"][value="' + type.trim() + '"]').checke
 
         // Populate ingredients in the form
         ingredientsArray.forEach(ingredientString => {
-    const [name, quantity] = ingredientString.trim().split(':');
+    const [name, quantity] = ingredientString.trim();
     const ingredientInput = document.getElementById(name.trim());
     if (ingredientInput) {
         ingredientInput.value = quantity.trim();

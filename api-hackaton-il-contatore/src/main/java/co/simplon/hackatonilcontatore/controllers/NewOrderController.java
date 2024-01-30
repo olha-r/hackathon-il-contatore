@@ -14,19 +14,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 import co.simplon.hackatonilcontatore.entities.NewOrder;
 import co.simplon.hackatonilcontatore.repositories.NewOrderRepository;
-import co.simplon.hackatonilcontatore.repositories.OrderRepository;
 
 @RestController
 @RequestMapping("/new-order")
 public class NewOrderController {
 
-    private final OrderRepository orderRepository;
     private final NewOrderRepository newOrderRepository;
 
     public NewOrderController(
-	    OrderRepository orderRepository,
 	    NewOrderRepository newOrderRepository) {
-	this.orderRepository = orderRepository;
 	this.newOrderRepository = newOrderRepository;
 
     }

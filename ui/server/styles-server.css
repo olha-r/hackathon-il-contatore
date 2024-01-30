@@ -20,6 +20,7 @@ h2{
     text-align: center;
     color: white;
 }
+
 .row{
     display: flex;
     flex-wrap: wrap;
@@ -60,3 +61,7 @@ h2{
     margin: 20px;
 
 }
+
+/*.price-card{
+    color: white;
+}*/

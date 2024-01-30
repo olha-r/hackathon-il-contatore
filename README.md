@@ -26,7 +26,7 @@ The primary focus of this application is to streamline the overall order process
    - Return to your CLI in hackathon-il-contatore et change directory in db
 
  ```bash 
-   cd hackathon-il-contatore/db 
+   cd db 
    ```
 
    - Connect to your Database and enter your password
@@ -53,7 +53,7 @@ The primary focus of this application is to streamline the overall order process
    - Anytime you can quit the program with the following command : \q
 
 
-4. **Add in hackaton-il-contatore/src/main/resources/application.properties**
+4. **In Eclipse add in hackaton-il-contatore/src/main/resources/application.properties**
 ```
 spring.datasource.url=jdbc:postgresql://localhost:5432/ilcontatore_new
 spring.datasource.username=postgres

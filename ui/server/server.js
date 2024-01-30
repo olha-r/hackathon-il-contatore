@@ -130,7 +130,7 @@ document.querySelector('input[name="type"][value="' + type.trim() + '"]').checke
 
         // Populate ingredients in the form
         ingredientsArray.forEach(ingredientString => {
-    const [name, quantity] = ingredientString.trim();
+    const [name, quantity] = ingredientString.split(':');
     const ingredientInput = document.getElementById(name.trim());
     if (ingredientInput) {
         ingredientInput.value = quantity.trim();
@@ -163,8 +163,6 @@ document.querySelector('input[name="type"][value="' + type.trim() + '"]').checke
                 ordersArray.forEach(order => {
                     createOrder(order);
                 });
-
-
                 const orderCardsContainer = document.getElementsByClassName("order-cards")[0];
                 orderCardsContainer.innerHTML = "";
                 ordersArray.length = 0;

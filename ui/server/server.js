@@ -104,6 +104,23 @@ document.addEventListener('DOMContentLoaded', function () {
         pizzaCard.appendChild(pizzaDetails);
 const orderCards = document.getElementsByClassName("order-cards")[0];
         orderCards.appendChild(pizzaCard);
+
+        const removeButton = document.createElement('button');
+        console.log(ordersArray);
+    removeButton.textContent = 'Remove Pizza';
+    removeButton.addEventListener('click', function () {
+        // Remove the card from the DOM
+        pizzaCard.remove();
+
+        // Find and remove the corresponding payload from ordersArray
+        const indexToRemove = ordersArray.findIndex(order => order.orderNumber === orderNumber);
+        if (indexToRemove !== -1) {
+            ordersArray.splice(indexToRemove, 1);
+        }
+        console.log(ordersArray);
+    });
+
+    pizzaCard.appendChild(removeButton);
     }
     document.getElementById('newPizza').addEventListener('click', function (event) {
         event.preventDefault();
